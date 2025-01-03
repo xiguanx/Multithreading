@@ -1,7 +1,7 @@
 package basicMultithreading;
 
 public class JoinThread {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Thread one = new Thread(() -> {
             for(int i = 0; i < 5; i++) {
                 System.out.println("Thread 1: " + i);
@@ -16,6 +16,8 @@ public class JoinThread {
 
         one.start();
         two.start();
+        one.join();
+        two.join();
         System.out.println("Main thread joined");
     }
 }
